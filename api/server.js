@@ -1,13 +1,15 @@
 // See https://github.com/typicode/json-server#module
 const jsonServer = require("json-server");
-const jsonServerAuth = require("json-server-auth");
+const auth = require("json-server-auth");
 
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
+server.db = router.db;
+
 // My code
-server.use(jsonServerAuth);
+server.use(auth);
 server.use(middlewares);
 
 // Add this before server.use(router)
@@ -18,7 +20,7 @@ server.use(
   }),
 );
 server.use(
-  jsonServerAuth.rewriter({
+  auth.rewriter({
     users: 664,
     messages: 664,
   }),
