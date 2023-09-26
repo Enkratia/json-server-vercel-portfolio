@@ -9,18 +9,20 @@ const middlewares = jsonServer.defaults();
 server.db = router.db;
 
 // Add this before server.use(router)
-// server.use(
-//   jsonServer.rewriter({
-//     "/api/*": "/$1",
-//   }),
-// );
-// server.use(
-//   auth.rewriter({
-//     users: 664,
-//     messages: 664,
-//     "/api/*": "/$1",
-//   }),
-// );
+server.use(
+  jsonServer.rewriter({
+    "/api/*": "/$1",
+    "/users/*": "/api/users/*",
+  }),
+);
+server.use(
+  auth.rewriter({
+    users: 664,
+    messages: 664,
+    "/api/*": "/$1",
+    "/users/*": "/api/users/*",
+  }),
+);
 
 // My code
 server.use(middlewares);
