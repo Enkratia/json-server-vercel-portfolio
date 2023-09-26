@@ -24,8 +24,8 @@ server.db = router.db;
 // );
 
 // My code
-server.use(middlewares);
 server.use(auth);
+server.use(middlewares);
 
 server.use(router);
 server.listen(3000, () => {
