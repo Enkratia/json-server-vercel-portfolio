@@ -12,7 +12,7 @@ server.db = router.db;
 server.use(
   jsonServer.rewriter({
     "/api/*": "/$1",
-    "/users": "/api/users",
+    "/api/users": "/users",
   }),
 );
 server.use(
@@ -20,7 +20,7 @@ server.use(
     users: 664,
     messages: 664,
     "/api/*": "/$1",
-    "/users": "/api/users",
+    "/api/users": "/users",
   }),
 );
 
