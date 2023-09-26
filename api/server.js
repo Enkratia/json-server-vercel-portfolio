@@ -16,13 +16,13 @@ server.use(middlewares);
 server.use(
   jsonServer.rewriter({
     "/api/*": "/$1",
-    "/blog/:resource/:id/show": "/:resource/:id",
   }),
 );
 server.use(
   auth.rewriter({
     users: 664,
     messages: 664,
+    "/api/*": "/$1",
   }),
 );
 server.use(router);
