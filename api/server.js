@@ -8,10 +8,6 @@ const middlewares = jsonServer.defaults();
 
 server.db = router.db;
 
-// My code
-server.use(auth);
-server.use(middlewares);
-
 // Add this before server.use(router)
 server.use(
   jsonServer.rewriter({
@@ -25,6 +21,11 @@ server.use(
     "/api/*": "/$1",
   }),
 );
+
+// My code
+server.use(auth);
+server.use(middlewares);
+
 server.use(router);
 server.listen(3000, () => {
   console.log("JSON Server is running");
