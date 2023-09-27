@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/megamenu"
+  to = "https://master--statuesque-tanuki-db4c10.netlify.app/megamenu"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
