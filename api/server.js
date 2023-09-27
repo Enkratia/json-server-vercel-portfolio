@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 3000;
+
 const jsonServer = require("json-server");
 const auth = require("json-server-auth");
 
@@ -12,8 +14,8 @@ server.use(middlewares);
 server.use(auth);
 
 server.use(router);
-server.listen(3000, () => {
-  console.log("JSON Server is running");
+server.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
 
 // Export the Server API
