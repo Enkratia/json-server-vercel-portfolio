@@ -5,10 +5,20 @@ const jsonServer = require("json-server");
 const auth = require("json-server-auth");
 
 const server = jsonServer.create();
+
+server.use(
+  cors({
+    credentials: true,
+    preflightContinue: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: true,
+  }),
+);
+
+app.options("*", cors());
+
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
-
-server.use(cors());
 
 server.db = router.db;
 
