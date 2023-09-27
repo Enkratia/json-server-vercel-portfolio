@@ -1,22 +1,14 @@
 const PORT = process.env.PORT || 3000;
+const cors = require("cors");
 
 const jsonServer = require("json-server");
 const auth = require("json-server-auth");
-
-const cors = require("cors");
 
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
-server.use(
-  cors({
-    credentials: true,
-    preflightContinue: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    origin: true,
-  }),
-);
+server.use(cors());
 
 server.db = router.db;
 
